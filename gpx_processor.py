@@ -1,6 +1,7 @@
 import logging
 import pandas
 import gpxpy
+from tqdm import tqdm
 from collections import defaultdict
 from gpxpy.geo import distance as gpx_distance
 import xml.etree.ElementTree as etree
