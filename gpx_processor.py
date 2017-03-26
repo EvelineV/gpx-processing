@@ -96,7 +96,7 @@ class GPXProcessor(object):
     def process_files(self, file_list, additional_info=True, hr_info=True):
         n_tracks_offset = 0
         for i, file in tqdm(enumerate(file_list)):
-            df_temp = gpx_to_dataframe(file, hr_info=hr_info, track_offset= i + n_tracks_offset)
+            df_temp = self.gpx_to_dataframe(file, hr_info=hr_info, track_offset= i + n_tracks_offset)
             n_tracks_offset += len(set(df_temp['track'])) - 1
             
             if i == 0:
@@ -104,7 +104,7 @@ class GPXProcessor(object):
                 lon_mean, lat_mean = df_temp['longitude'].mean(), df_temp['latitude'].mean()
 
             if additional_info:
-                df_temp = add_additional_cols(df_temp, lon_mean, lat_mean)
+                df_temp = self.add_additional_cols(df_temp, lon_mean, lat_mean)
             
             if i == 0:
                 df = df_temp
