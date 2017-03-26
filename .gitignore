@@ -3,3 +3,4 @@ test.html
 /.ipynb_checkpoints
 /env
 /gpx_files
+/__pycache__
